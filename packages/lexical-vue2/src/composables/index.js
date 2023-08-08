@@ -1,3 +1,5 @@
 export * from './useCanShowPlaceholder'
 export * from './useRichTextSetup'
 export * from './useMounted'
+export * from './useDecorators'
+export * from './useEditor'

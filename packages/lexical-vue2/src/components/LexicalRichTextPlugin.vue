@@ -1,6 +1,8 @@
 <script>
 import { useCanShowPlaceholder, useRichTextSetup } from '../composables'
 import { inject } from "@vue/composition-api";
+import Decorators from './LexicalDecoratedTeleports'
+
 
 export default {
   setup() {
@@ -11,6 +13,9 @@ export default {
       showPlaceholder
     }
   },
+  components: {
+    Decorators
+  }
 }
 </script>
 
@@ -18,6 +23,7 @@ export default {
   <div>
     <slot v-if="showPlaceholder" name="placeholder"/>
     <slot name="contentEditable"/>
+    <Decorators />
   </div>
 </template>
 

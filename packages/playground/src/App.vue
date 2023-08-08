@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <LexicalEditor/>
+    <h1>asdasdasd</h1>
+    <LexicalEditor ref="editorDOM"/>
+
   </div>
 </template>
 
