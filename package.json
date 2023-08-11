@@ -1,0 +1,7 @@
+{
+	"pnpm": {
+		"patchedDependencies": {
+			"vue2-teleport-component@0.0.4": "patches/vue2-teleport-component@0.0.4.patch"
+		}
+	}
+}

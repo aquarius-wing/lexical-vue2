@@ -8,7 +8,6 @@ import {CodeHighlightNode, CodeNode} from "@lexical/code";
 import {TableCellNode, TableNode, TableRowNode} from "@lexical/table";
 import {HashtagNode} from "@lexical/hashtag";
 import {$createImageNode, ImageNode} from "@/nodes/ImageNode";
-import MyDemo from "@/MyDemo.vue";
 export default {
   setup() {
     function prePopulatedRichText() {
@@ -48,7 +47,6 @@ export default {
     }
   },
   components: {
-    MyDemo,
     LexicalComposer,
     LexicalRichTextPlugin,
     LexicalContentEditable,
@@ -58,9 +56,6 @@ export default {
 
 <template>
   <LexicalComposer :initialConfig="config">
-    <Vue2Teleport to="h1">
-      <MyDemo/>
-    </Vue2Teleport>
     <div class="editor-container">
       <div class="editor-inner">
         <LexicalRichTextPlugin>

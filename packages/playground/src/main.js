@@ -4,7 +4,7 @@ import VueCompositionApi from '@vue/composition-api';
 import Teleport from 'vue2-teleport-component'
 
 Vue.use(VueCompositionApi);
-Vue.use(Teleport, { prefix: 'Vue2' })
+Vue.use(Teleport)
 
 
 Vue.config.productionTip = false

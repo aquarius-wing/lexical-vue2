@@ -1,0 +1,74 @@
+diff --git a/dist/vue2-teleport-component.js b/dist/vue2-teleport-component.js
+index 47d4c17e0b53d64a854a82a59649f085bb5ebdb2..fd52e5c4a3c7cdaa61fb8eaa05ed8b4f0168d85b 100644
+--- a/dist/vue2-teleport-component.js
++++ b/dist/vue2-teleport-component.js
+@@ -1,42 +1,37 @@
+ function l(e) {
+-  return e instanceof Element;
++    return e instanceof Element;
+ }
++
+ function o(e) {
+-  return typeof e == "string";
++    return typeof e == "string";
+ }
++
+ const n = {
+-  name: "Teleport",
+-  props: {
+-    to: [String, Element]
+-  },
+-  computed: {
+-    toEl({ to: e }) {
+-      return l(e) ? e : o(e) && e !== "" ? document.querySelector(e) : null;
++    name: "Teleport",
++    props: {
++        to: [String, Element]
++    },
++    mounted() {
++        const e1 = this.to;
++        const toEL = l(e1) ? e1 : o(e1) && e1 !== "" ? document.querySelector(e1) : null;
++        var e;
++        if (this.$el && this.$el.parentElement !== toEL && toEL !== null) {
++            toEL.appendChild(this.$el);
++        }
++    },
++    destroyed() {
++        this.$el.remove();
++    },
++    methods: {},
++    render() {
++        var e, t;
++        return (t = (e = this.$scopedSlots).default) == null ? void 0 : t.call(e);
+     }
+-  },
+-  watch: {
+-    toEl: "teleport"
+-  },
+-  mounted() {
+-    this.teleport();
+-  },
+-  destroyed() {
+-    this.$el.remove();
+-  },
+-  methods: {
+-    teleport() {
+-      var e;
+-      this.$el && this.$el.parentElement !== this.toEl && ((e = this.toEl) == null || e.appendChild(this.$el));
+-    }
+-  },
+-  render() {
+-    var e, t;
+-    return (t = (e = this.$scopedSlots).default) == null ? void 0 : t.call(e);
+-  }
+ };
+-n.install = function(e, { prefix: t = "" } = {}) {
+-  e.component(t + n.name, n);
++n.install = function (e, {prefix: t = ""} = {}) {
++    e.component(t + n.name, n);
+ };
+ export {
+-  n as default
++    n as default
+ };
++
