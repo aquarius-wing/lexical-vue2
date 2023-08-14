@@ -59,7 +59,6 @@ export default {
         this.emit('error', error)
       },
     })
-    window.editor = editor
     initializeEditor(editor, props.initialConfig.editorState)
 
     onMounted(() => {

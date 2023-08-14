@@ -1,8 +1,8 @@
 {
   "name": "lexical-vue2",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "use lexical in vue2",
-  "main": "src/index.js",
+  "main": "dist/bundle.js",
   "module": "dist/bundle.esm.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,10 +10,14 @@
   },
   "exports": {
     ".": {
-      "import": "./src/index.js",
+      "import": "./dist/bundle.esm.js",
       "require": "./dist/bundle.js"
-    },
-    "./package.json": "./package.json"
+    }
+  },
+  "peerDependencies": {
+    "@meogic/lexical": "^0.11.1-mod7",
+    "vue": "^2.6.1",
+    "@vue/composition-api": "^1.7.1"
   },
   "keywords": [],
   "author": "",
@@ -23,11 +27,8 @@
     "@lexical/rich-text": "^0.11.3",
     "@lexical/text": "^0.11.3",
     "@lexical/utils": "^0.11.3",
-    "@vue/composition-api": "^1.7.1",
     "core-js": "3.8.3",
-    "lexical": "^0.11.3",
-    "vue": "~2.6.14",
-    "vue2-teleport-component": "^0.0.4"
+    "lexical": "^0.11.3"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.3",
@@ -40,6 +41,9 @@
     "rollup-plugin-vue": "^5.1.9",
     "rollup-watch": "^4.0.0",
     "terser": "^4.2.0",
-    "vue-template-compiler": "~2.6.14"
+    "vue-template-compiler": "~2.6.14",
+    "vue": "~2.6.14",
+    "vue2-teleport-component": "^0.0.4",
+    "@vue/composition-api": "^1.7.1"
   }
 }
