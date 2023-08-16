@@ -1,5 +1,13 @@
 <script>
-import {LexicalComposer, LexicalRichTextPlugin, LexicalContentEditable} from 'lexical-vue2'
+import {
+  LexicalComposer,
+  LexicalRichTextPlugin,
+  LexicalContentEditable,
+  LexicalAutoFocusPlugin,
+  LexicalAutoLinkPlugin,
+  LexicalMarkdownShortcutPlugin,
+  LexicalTreeViewPlugin
+} from 'lexical-vue2'
 import {$createHeadingNode, HeadingNode, QuoteNode} from '@lexical/rich-text'
 import {$createParagraphNode, $createTextNode, $getRoot} from "lexical";
 import {ListItemNode, ListNode} from "@lexical/list";
@@ -8,6 +16,7 @@ import {CodeHighlightNode, CodeNode} from "@lexical/code";
 import {TableCellNode, TableNode, TableRowNode} from "@lexical/table";
 import {HashtagNode} from "@lexical/hashtag";
 import {$createImageNode, ImageNode} from "@/nodes/ImageNode";
+
 export default {
   setup() {
     function prePopulatedRichText() {
@@ -42,14 +51,48 @@ export default {
       editorState: prePopulatedRichText,
     }
 
+    const URL_MATCHER = /((https?:\/\/(www\.)?)|(www\.))[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/
+
+    const EMAIL_MATCHER = /(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
+
+    const MATCHERS = [
+      (text) => {
+        const match = URL_MATCHER.exec(text)
+        return (
+            match && {
+              index: match.index,
+              length: match[0].length,
+              text: match[0],
+              url: match[0],
+            }
+        )
+      },
+      (text) => {
+        const match = EMAIL_MATCHER.exec(text)
+        return (
+            match && {
+              index: match.index,
+              length: match[0].length,
+              text: match[0],
+              url: `mailto:${match[0]}`,
+            }
+        )
+      },
+    ]
+
     return {
-      config
+      config,
+      MATCHERS
     }
   },
   components: {
     LexicalComposer,
     LexicalRichTextPlugin,
     LexicalContentEditable,
+    LexicalAutoFocusPlugin,
+    LexicalAutoLinkPlugin,
+    LexicalMarkdownShortcutPlugin,
+    LexicalTreeViewPlugin,
   },
 }
 </script>
@@ -68,6 +111,16 @@ export default {
             </div>
           </template>
         </LexicalRichTextPlugin>
+        <LexicalAutoFocusPlugin/>
+        <LexicalAutoLinkPlugin :matchers="MATCHERS"/>
+        <LexicalMarkdownShortcutPlugin/>
+        <LexicalTreeViewPlugin
+            view-class-name="tree-view-output"
+            time-travel-panel-class-name="debug-timetravel-panel"
+            time-travel-button-class-name="debug-timetravel-button"
+            time-travel-panel-slider-class-name="debug-timetravel-panel-slider"
+            time-travel-panel-button-class-name="debug-timetravel-panel-button"
+        />
       </div>
     </div>
   </LexicalComposer>

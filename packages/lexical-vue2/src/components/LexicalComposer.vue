@@ -7,7 +7,7 @@ export default {
       editor: this.editor
     }
   },
-  setup(props) {
+  setup(props, {emit}) {
     const HISTORY_MERGE_OPTIONS = {tag: 'history-merge'}
     function initializeEditor(editor, initialEditorState) {
       if (initialEditorState === null) {
@@ -56,7 +56,7 @@ export default {
       nodes: props.initialConfig.nodes,
       theme: props.initialConfig.theme,
       onError(error) {
-        this.emit('error', error)
+        emit('error', error)
       },
     })
     initializeEditor(editor, props.initialConfig.editorState)

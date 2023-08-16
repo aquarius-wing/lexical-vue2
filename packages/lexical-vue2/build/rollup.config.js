@@ -1,27 +1,27 @@
 import vue from 'rollup-plugin-vue';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import { terser } from 'rollup-plugin-terser';
+import babel from 'rollup-plugin-babel';
 
 export default {
     input: 'src/index.js',
     output: [
         {
-          file: 'dist/bundle.js',
-          format: 'umd',
-          name: 'lexical-vue2',
-          globals: {
-            vue: 'Vue'
-          }
+            file: 'dist/bundle.js',
+            format: 'umd',
+            name: 'lexical-vue2',
+            globals: {
+                vue: 'Vue'
+            }
         },
         {
-          file: 'dist/bundle.esm.js',
-          format: 'esm',
-          globals: {
-            vue: 'Vue'
-          }
+            file: 'dist/bundle.esm.js',
+            format: 'esm',
+            globals: {
+                vue: 'Vue'
+            }
         }
-      ],
+    ],
     plugins: [
         resolve({
             extensions: ['.js', '.vue'],
@@ -31,6 +31,9 @@ export default {
             css: true,
             compileTemplate: true,
         }),
+        babel({
+            exclude: 'node_modules/**' // 只对我们的源代码进行转换
+        })
     ],
     external: [
         'vue',
@@ -40,6 +43,8 @@ export default {
         '@lexical/rich-text',
         '@lexical/text',
         '@lexical/utils',
+        '@lexical/mark',
+        '@lexical/markdown',
         'lexical'
     ]
 };
