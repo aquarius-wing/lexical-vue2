@@ -1,18 +1,19 @@
 <script>
-import {inject, onMounted, ref, toRaw} from "@vue/composition-api";
+import {onMounted, ref, toRaw} from "@vue/composition-api";
+import {useEditor, useMounted} from "../composables";
 
 export default {
   setup() {
     const rootRef = ref(null)
-    const editor = inject('editor')
+    const editor = useEditor()
     const editable = ref(true)
-    onMounted(() => {
+    useMounted(() => {
       if (rootRef.value) {
         editor.setRootElement(toRaw(rootRef.value))
         editable.value = editor.isEditable()
       }
-      editor.registerEditableListener((currentIsEditable) => {
-        this.editable.value = currentIsEditable
+      return editor.registerEditableListener((currentIsEditable) => {
+        editable.value = currentIsEditable
       })
     })
     return {

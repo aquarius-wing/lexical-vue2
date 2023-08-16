@@ -1,4 +1,4 @@
-import {computed, getCurrentInstance, h as _h, reactive, ref, unref, watch, watchEffect} from '@vue/composition-api';
+import {computed, h as _h, ref, unref} from '@vue/composition-api';
 import Teleport from 'vue2-teleport-component';
 import { useMounted } from './useMounted';
 

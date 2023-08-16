@@ -5,3 +5,5 @@ Vue.use(VueCompositionApi);
 
 export * from './components'
 
+export * from './composables'
+

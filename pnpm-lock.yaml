@@ -39,6 +39,9 @@ importers:
       lexical:
         specifier: ^0.11.3
         version: 0.11.3
+      vue2-teleport-component:
+        specifier: ^0.0.4
+        version: 0.0.4(patch_hash=fp7xacqacib5t3lepxg72gwvbi)
     devDependencies:
       '@rollup/plugin-commonjs':
         specifier: ^25.0.3
@@ -79,9 +82,6 @@ importers:
       vue-template-compiler:
         specifier: ~2.6.14
         version: 2.6.14
-      vue2-teleport-component:
-        specifier: ^0.0.4
-        version: 0.0.4(patch_hash=fp7xacqacib5t3lepxg72gwvbi)
 
   packages/playground:
     dependencies:
@@ -8825,6 +8825,7 @@ packages:
 
   /vue2-teleport-component@0.0.4(patch_hash=fp7xacqacib5t3lepxg72gwvbi):
     resolution: {integrity: sha512-MABcSD/8FUOO9ysBPTO+edyhunob7OxZbmh2CfBr/Byv2eXbw+HjekGnIFo5AO/VNk37dRduwaER5xi5EPwOiA==}
+    dev: false
     patched: true
 
   /vue@2.6.14:
