@@ -11,7 +11,7 @@ For documentation and more information about Lexical, be sure to visit the [Lexi
 npm install lexical-vue2 # or pnpm or yarn
 ```
 
-Below is an example of a basic plain text editor using `lexical` and `lexical-vue`.
+Below is an example of a basic plain text editor using `lexical` and `lexical-vue2`.
 
 
 ```vue
