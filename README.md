@@ -1,5 +1,5 @@
 # lexical-vue2
-An extensible Vue 3 web text-editor based on [Lexical](https://github.com/facebook/lexical).
+An extensible Vue 2 web text-editor based on [Lexical](https://github.com/facebook/lexical).
 
 For documentation and more information about Lexical, be sure to visit the [Lexical website](https://lexical.dev/).
 
