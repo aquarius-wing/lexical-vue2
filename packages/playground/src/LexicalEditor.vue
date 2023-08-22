@@ -6,6 +6,7 @@ import {
   LexicalAutoFocusPlugin,
   LexicalAutoLinkPlugin,
   LexicalMarkdownShortcutPlugin,
+  LexicalOnChangePlugin,
   LexicalTreeViewPlugin
 } from 'lexical-vue2'
 import {$createHeadingNode, HeadingNode, QuoteNode} from '@lexical/rich-text'
@@ -80,9 +81,14 @@ export default {
       },
     ]
 
+    const onChange = () => {
+      console.log('change')
+    }
+
     return {
       config,
-      MATCHERS
+      MATCHERS,
+      onChange
     }
   },
   components: {
@@ -92,6 +98,7 @@ export default {
     LexicalAutoFocusPlugin,
     LexicalAutoLinkPlugin,
     LexicalMarkdownShortcutPlugin,
+    LexicalOnChangePlugin,
     LexicalTreeViewPlugin,
   },
 }
@@ -114,6 +121,7 @@ export default {
         <LexicalAutoFocusPlugin/>
         <LexicalAutoLinkPlugin :matchers="MATCHERS"/>
         <LexicalMarkdownShortcutPlugin/>
+        <LexicalOnChangePlugin v-on:change="onChange" />
         <LexicalTreeViewPlugin
             view-class-name="tree-view-output"
             time-travel-panel-class-name="debug-timetravel-panel"

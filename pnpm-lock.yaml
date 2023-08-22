@@ -15,6 +15,19 @@ importers:
 
   packages/lexical-vue2:
     dependencies:
+      core-js:
+        specifier: 3.8.3
+        version: 3.8.3
+      vue2-teleport-component:
+        specifier: ^0.0.4
+        version: 0.0.4(patch_hash=fp7xacqacib5t3lepxg72gwvbi)
+    devDependencies:
+      '@babel/core':
+        specifier: ^7.12.16
+        version: 7.22.10
+      '@babel/preset-env':
+        specifier: ^7.22.10
+        version: 7.22.10(@babel/core@7.22.10)
       '@lexical/clipboard':
         specifier: ^0.11.3
         version: 0.11.3(lexical@0.11.3)
@@ -39,22 +52,6 @@ importers:
       '@lexical/utils':
         specifier: ^0.11.3
         version: 0.11.3(lexical@0.11.3)
-      core-js:
-        specifier: 3.8.3
-        version: 3.8.3
-      lexical:
-        specifier: ^0.11.3
-        version: 0.11.3
-      vue2-teleport-component:
-        specifier: ^0.0.4
-        version: 0.0.4(patch_hash=fp7xacqacib5t3lepxg72gwvbi)
-    devDependencies:
-      '@babel/core':
-        specifier: ^7.12.16
-        version: 7.22.10
-      '@babel/preset-env':
-        specifier: ^7.22.10
-        version: 7.22.10(@babel/core@7.22.10)
       '@rollup/plugin-commonjs':
         specifier: ^25.0.3
         version: 25.0.3(rollup@2.68.0)
@@ -64,6 +61,9 @@ importers:
       '@vue/composition-api':
         specifier: ^1.7.1
         version: 1.7.1(vue@2.6.14)
+      lexical:
+        specifier: ^0.11.3
+        version: 0.11.3
       rollup:
         specifier: 2.68.0
         version: 2.68.0
@@ -1550,7 +1550,6 @@ packages:
       '@lexical/selection': 0.11.3(lexical@0.11.3)
       '@lexical/utils': 0.11.3(lexical@0.11.3)
       lexical: 0.11.3
-    dev: false
 
   /@lexical/code@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-BIMPd2op65iP4N9SkKIUVodZoWeSsnk6skNJ8UHBO/Rg0ZxyAqxLpnBhEgHq2QOoTBbEW6OEFtkc7/+f9LINZg==}
@@ -1560,7 +1559,6 @@ packages:
       '@lexical/utils': 0.11.3(lexical@0.11.3)
       lexical: 0.11.3
       prismjs: 1.29.0
-    dev: false
 
   /@lexical/dragon@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-S18uwqOOpV2yIAFVWqSvBdhZ5BGadPQO4ejZF15wP8LUuqkxCs+0I/MjLovQ7tx0Cx34KdDaOXtM6XeG74ixYw==}
@@ -1568,7 +1566,6 @@ packages:
       lexical: 0.11.3
     dependencies:
       lexical: 0.11.3
-    dev: false
 
   /@lexical/hashtag@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-7auoaWp2QhsX9/Bq0SxLXatUaSwqoT9HlWNTH2vKsw8tdeUBYacTHLuBNncTGrznXLG0/B5+FWoLuM6Pzqq4Ig==}
@@ -1595,7 +1592,6 @@ packages:
     dependencies:
       '@lexical/selection': 0.11.3(lexical@0.11.3)
       lexical: 0.11.3
-    dev: false
 
   /@lexical/link@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-stAjIrDrF18dPKK25ExPwMCcMe0KKD0FWVzo3F7ejh9DvrQcLFeBPcs8ze71chS3D5fQDB/CzdwvMjEViKmq2A==}
@@ -1604,7 +1600,6 @@ packages:
     dependencies:
       '@lexical/utils': 0.11.3(lexical@0.11.3)
       lexical: 0.11.3
-    dev: false
 
   /@lexical/list@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-Cs9071wDfqi4j1VgodceiR1jTHj13eCoEJDhr3e/FW0x5we7vfbTMtWlOWbveIoryAh+rQNgiD5e8SrAm6Zs3g==}
@@ -1613,7 +1608,6 @@ packages:
     dependencies:
       '@lexical/utils': 0.11.3(lexical@0.11.3)
       lexical: 0.11.3
-    dev: false
 
   /@lexical/mark@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-0wAtufmaA0rMVFXoiJ0sY/tiJsQbHuDpgywb1Qa8qnZZcg7ZTrQMz9Go0fEWYcbSp8OH2o0cjbDTz3ACS1qCUA==}
@@ -1622,7 +1616,6 @@ packages:
     dependencies:
       '@lexical/utils': 0.11.3(lexical@0.11.3)
       lexical: 0.11.3
-    dev: false
 
   /@lexical/markdown@0.11.3(@lexical/clipboard@0.11.3)(@lexical/selection@0.11.3)(lexical@0.11.3):
     resolution: {integrity: sha512-sF8ow32BDme3UvxaKpf+j+vMc4T/XvDEzteZHmvvP7NX/iUtK3yUkTyT7rKuGwiKLYfMBwQaKMGjU3/nlIOzUg==}
@@ -1639,7 +1632,6 @@ packages:
     transitivePeerDependencies:
       - '@lexical/clipboard'
       - '@lexical/selection'
-    dev: false
 
   /@lexical/overflow@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-ShjCG8lICShOBKwrpP+9PjRFKEBCSUUMjbIGZfLnoL//3hyRtGv5aRgRyfJlRgDhCve0ROt5znLJV88EXzGRyA==}
@@ -1675,7 +1667,6 @@ packages:
       '@lexical/selection': 0.11.3(lexical@0.11.3)
       '@lexical/utils': 0.11.3(lexical@0.11.3)
       lexical: 0.11.3
-    dev: false
 
   /@lexical/selection@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-15lQpcKT/vd7XZ5pnF1nb+kpKb72e9Yi1dVqieSxTeXkzt1cAZFKP3NB4RlhOKCv1N+glSBnjSxRwgsFfbD+NQ==}
@@ -1683,7 +1674,6 @@ packages:
       lexical: 0.11.3
     dependencies:
       lexical: 0.11.3
-    dev: false
 
   /@lexical/table@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-EyRnN39CSPsMceADBR7Kf+sBHNpNQlPEkn/52epeDSnakR6s80woyrA3kIzKo6mLB4afvoqdYc7RfR96M9JLIA==}
@@ -1692,7 +1682,6 @@ packages:
     dependencies:
       '@lexical/utils': 0.11.3(lexical@0.11.3)
       lexical: 0.11.3
-    dev: false
 
   /@lexical/text@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-gCEN8lJyR6b+yaOwKWGj79pbOfCQPWU/PHWyoNFUkEJXn3KydCzr2EYb6ta2cvQWRQU4G2BClKCR56jL4NS+qg==}
@@ -1700,7 +1689,6 @@ packages:
       lexical: 0.11.3
     dependencies:
       lexical: 0.11.3
-    dev: false
 
   /@lexical/utils@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-vC4saCrlcmyIJnvrYKw1uYxZojlD1DCIBsFlgmO8kXyRYXjj+o/8PBdn2dsgSQ3rADrC2mUloOm/maekDcYe9Q==}
@@ -1711,7 +1699,6 @@ packages:
       '@lexical/selection': 0.11.3(lexical@0.11.3)
       '@lexical/table': 0.11.3(lexical@0.11.3)
       lexical: 0.11.3
-    dev: false
 
   /@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1:
     resolution: {integrity: sha512-54/JRvkLIzzDWshCWfuhadfrfZVPiElY8Fcgmg1HroEly/EDSszzhBAsarCux+D/kOslTRquNzuyGSmUSTTHGg==}
@@ -5907,7 +5894,6 @@ packages:
 
   /lexical@0.11.3:
     resolution: {integrity: sha512-xsMKgx/Fa+QHg/nweemU04lCy7TnEr8LyeDtsKUC7fIDN9wH3GqbnQ0+e3Hbg4FmxlhDCiPPt0GcZAROq3R8uw==}
-    dev: false
 
   /lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
@@ -7189,7 +7175,6 @@ packages:
   /prismjs@1.29.0:
     resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
     engines: {node: '>=6'}
-    dev: false
 
   /process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}

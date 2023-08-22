@@ -1,4 +1,4 @@
 .idea/*
 node_modules
 dist
-packages/.DS_Store
+.DS_Store
