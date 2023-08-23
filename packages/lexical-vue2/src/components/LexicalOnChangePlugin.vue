@@ -37,7 +37,7 @@ export default {
         if (props.ignoreInitialChange && prevEditorState.isEmpty()) {
           return
         }
-        emit('change', editorState, editor)
+        emit('change', editorState, editor, tags)
         editorState.read(() => {
           emit('update:modelValue', $getRoot().getTextContent())
         })

@@ -1,6 +1,6 @@
 {
   "name": "lexical-vue2",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "use lexical in vue2",
   "main": "dist/bundle.js",
   "module": "dist/bundle.esm.js",

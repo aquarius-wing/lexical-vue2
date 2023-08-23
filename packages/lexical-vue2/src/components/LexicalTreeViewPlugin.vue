@@ -384,12 +384,12 @@ export default {
         const treeText = generateContent(editor.getEditorState());
         const compositionText = compositionKey !== null && `Composition key: ${compositionKey}`;
         content.value = [treeText, compositionText].filter(Boolean).join('\n\n');
-        if (!timeTravelEnabled.value) {
+        /*if (!timeTravelEnabled.value) {
           timeStampedEditorStates.value.push([
             ...timeStampedEditorStates.value,
             [Date.now(), editorState],
           ]);
-        }
+        }*/
       });
 
       onInvalidate(() => {
@@ -397,11 +397,14 @@ export default {
       });
     });
 
-    const totalEditorStates = computed(() => timeStampedEditorStates.value.length)
+    const totalEditorStates = computed(() => {
+      return timeStampedEditorStates.value.length
+    })
 
     let timeoutId;
 
-    watchEffect((onInvalidate) => {
+    /*watchEffect((onInvalidate) => {
+      console.log('watchEffect2')
       if (isPlaying.value) {
         const play = () => {
           const currentIndex = playingIndexRef.value;
@@ -430,7 +433,7 @@ export default {
       onInvalidate(() => {
         clearTimeout(timeoutId);
       });
-    });
+    });*/
 
     watchEffect(() => {
       const element = treeElementRef.value;
