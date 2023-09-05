@@ -7,7 +7,8 @@ import {
   LexicalAutoLinkPlugin,
   LexicalMarkdownShortcutPlugin,
   LexicalOnChangePlugin,
-  LexicalTreeViewPlugin
+  LexicalTreeViewPlugin,
+  LexicalHistoryPlugin
 } from 'lexical-vue2'
 import {$createHeadingNode, HeadingNode, QuoteNode} from '@lexical/rich-text'
 import {$createParagraphNode, $createTextNode, $getRoot} from "lexical";
@@ -100,6 +101,7 @@ export default {
     LexicalMarkdownShortcutPlugin,
     LexicalOnChangePlugin,
     LexicalTreeViewPlugin,
+    LexicalHistoryPlugin,
   },
 }
 </script>
@@ -129,6 +131,7 @@ export default {
             time-travel-panel-slider-class-name="debug-timetravel-panel-slider"
             time-travel-panel-button-class-name="debug-timetravel-panel-button"
         />
+        <LexicalHistoryPlugin />
       </div>
     </div>
   </LexicalComposer>

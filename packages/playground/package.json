@@ -29,6 +29,7 @@
     "core-js": "^3.8.3",
     "lexical": "^0.11.3",
     "lexical-vue2": "workspace:*",
+    "ts-loader": "^9.4.4",
     "vue": "~2.6.14",
     "vue2-teleport-component": "^0.0.4"
   },
@@ -37,9 +38,11 @@
     "@babel/eslint-parser": "^7.12.16",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-typescript": "^5.0.8",
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
+    "typescript": "4",
     "vue-template-compiler": "~2.6.14"
   },
   "keywords": [],

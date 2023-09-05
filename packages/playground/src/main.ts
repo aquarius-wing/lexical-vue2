@@ -1,6 +1,8 @@
 import Vue from 'vue'
+// @ts-ignore
 import App from './App.vue'
 import VueCompositionApi from '@vue/composition-api';
+// @ts-ignore
 import Teleport from 'vue2-teleport-component'
 
 Vue.use(VueCompositionApi);
