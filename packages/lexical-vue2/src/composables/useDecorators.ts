@@ -1,11 +1,13 @@
 import {computed, h as _h, ref, unref} from '@vue/composition-api';
 import Teleport from 'vue2-teleport-component';
 import { useMounted } from './useMounted';
+import {LexicalEditor} from "lexical";
+import {VNode} from "vue";
 
-export function useDecorators(editor) {
-  const decorators = ref({});
+export function useDecorators(editor: LexicalEditor) {
+  const decorators = ref<Record<string, any>>({});
   useMounted(() => {
-    const listen = (nextDecorators) => {
+    const listen = (nextDecorators: Record<string, any>) => {
       decorators.value = nextDecorators;
     }
     editor._listeners.decorator.add(listen)
@@ -17,7 +19,7 @@ export function useDecorators(editor) {
 
   // Return decorators defined as Vue Teleports
   return computed(() => {
-    const decoratedTeleports = [];
+    const decoratedTeleports: VNode[] = [];
     const decoratorKeys = Object.keys(unref(decorators));
     for (let i = 0; i < decoratorKeys.length; i++) {
       const nodeKey = decoratorKeys[i];

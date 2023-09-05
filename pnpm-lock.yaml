@@ -18,6 +18,9 @@ importers:
       core-js:
         specifier: 3.8.3
         version: 3.8.3
+      vue-class-component:
+        specifier: ^7.2.6
+        version: 7.2.6(vue@2.6.14)
       vue2-teleport-component:
         specifier: ^0.0.4
         version: 0.0.4(patch_hash=fp7xacqacib5t3lepxg72gwvbi)
@@ -8857,6 +8860,14 @@ packages:
     engines: {node: '>=0.10.0'}
     requiresBuild: true
     dev: true
+
+  /vue-class-component@7.2.6(vue@2.6.14):
+    resolution: {integrity: sha512-+eaQXVrAm/LldalI272PpDe3+i4mPis0ORiMYxF6Ae4hyuCh15W8Idet7wPUEs4N4YptgFHGys4UrgNQOMyO6w==}
+    peerDependencies:
+      vue: ^2.0.0
+    dependencies:
+      vue: 2.6.14
+    dev: false
 
   /vue-eslint-parser@8.3.0(eslint@7.32.0):
     resolution: {integrity: sha512-dzHGG3+sYwSf6zFBa0Gi9ZDshD7+ad14DGOdTLjruRVgZXe2J+DcZ9iUhyR48z5g1PqRa20yt3Njna/veLJL/g==}
