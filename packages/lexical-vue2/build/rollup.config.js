@@ -47,6 +47,7 @@ export default {
         '@lexical/utils',
         '@lexical/mark',
         '@lexical/markdown',
+        '@lexical/list',
         'lexical'
     ]
 };

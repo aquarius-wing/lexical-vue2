@@ -46,6 +46,9 @@ importers:
       '@lexical/link':
         specifier: ^0.11.3
         version: 0.11.3(lexical@0.11.3)
+      '@lexical/list':
+        specifier: ^0.11.3
+        version: 0.11.3(lexical@0.11.3)
       '@lexical/mark':
         specifier: ^0.11.3
         version: 0.11.3(lexical@0.11.3)

@@ -1,6 +1,6 @@
 {
   "name": "lexical-vue2",
-  "version": "1.0.17",
+  "version": "1.0.22",
   "description": "use lexical in vue2",
   "main": "dist/bundle.js",
   "module": "dist/bundle.esm.js",
@@ -34,6 +34,7 @@
     "@lexical/dragon": "^0.11.3",
     "@lexical/history": "^0.11.3",
     "@lexical/link": "^0.11.3",
+    "@lexical/list": "^0.11.3",
     "@lexical/mark": "^0.11.3",
     "@lexical/markdown": "^0.11.3",
     "@lexical/rich-text": "^0.11.3",

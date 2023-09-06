@@ -8,7 +8,10 @@ import {
   LexicalMarkdownShortcutPlugin,
   LexicalOnChangePlugin,
   LexicalTreeViewPlugin,
-  LexicalHistoryPlugin
+  LexicalHistoryPlugin,
+  LexicalListPlugin,
+  LexicalCheckListPlugin,
+  LexicalTabIndentationPlugin,
 } from 'lexical-vue2'
 import {$createHeadingNode, HeadingNode, QuoteNode} from '@lexical/rich-text'
 import {$createParagraphNode, $createTextNode, $getRoot} from "lexical";
@@ -102,6 +105,9 @@ export default {
     LexicalOnChangePlugin,
     LexicalTreeViewPlugin,
     LexicalHistoryPlugin,
+    LexicalListPlugin,
+    LexicalCheckListPlugin,
+    LexicalTabIndentationPlugin,
   },
 }
 </script>
@@ -132,6 +138,9 @@ export default {
             time-travel-panel-button-class-name="debug-timetravel-panel-button"
         />
         <LexicalHistoryPlugin />
+        <LexicalListPlugin />
+        <LexicalCheckListPlugin />
+        <LexicalTabIndentationPlugin />
       </div>
     </div>
   </LexicalComposer>

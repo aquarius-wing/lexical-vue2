@@ -25,4 +25,12 @@ export {
 export {
     default as LexicalHistoryPlugin
 } from './LexicalHistoryPlugin.vue'
-
+export {
+    default as LexicalListPlugin
+} from './LexicalListPlugin.vue'
+export {
+    default as LexicalCheckListPlugin
+} from './LexicalCheckListPlugin.vue'
+export {
+    default as LexicalTabIndentationPlugin
+} from './LexicalTabIndentationPlugin.vue'
