@@ -1,12 +1,12 @@
 <script>
 import Teleport from 'vue2-teleport-component';
-import useInsertMenuPlugin from "@/composables/useInsertMenuPlugin";
+import {useSlashMenuPlugin} from "@/composables";
 import DropdownMenu from "@/components/DropdownMenu.vue";
 import DropdownMenuItem from '@/components/DropdownMenuItem.vue'
 
 export default {
-  setup() {
-    return useInsertMenuPlugin()
+  setup(props) {
+    return useSlashMenuPlugin(props)
   },
   components: {
     DropdownMenu,
@@ -32,9 +32,9 @@ export default {
         没有结果
       </div>
       <DropdownMenuItem v-for="(blockFormat, index) in filterBlockFormats" :key="index" :class="blockFormat.className">
-        <span class="mr-auto">{{ blockFormat.name }}</span>
-        <span style="color: #858a90">
-          {{ blockFormat.initialLetterOfChinesePinyinKey }}
+        <span class="mr-auto dropdown-menu-item-title">{{ blockFormat.name }}</span>
+        <span class="dropdown-menu-item-subtitle" v-if="blockFormat.wordsToShow">
+          {{ blockFormat.wordsToShow }}
         </span>
       </DropdownMenuItem>
     </DropdownMenu>

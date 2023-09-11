@@ -171,6 +171,9 @@ export default {
     margin: 0 8px;
     padding: 8px 8px;
     gap: 12px;
+    .dropdown-menu-item-subtitle{
+      color: #858a90;
+    }
 
     .img-boxing {
       width: 20px;

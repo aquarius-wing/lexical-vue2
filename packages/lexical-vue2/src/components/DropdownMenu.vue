@@ -20,7 +20,7 @@ export default {
       default: false,
     },
     element: {
-      type: Object,
+      type: HTMLElement,
       default: undefined,
     },
   },

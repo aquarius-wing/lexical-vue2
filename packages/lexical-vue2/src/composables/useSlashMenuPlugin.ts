@@ -15,17 +15,16 @@ import {$isListNode, insertList} from "@lexical/list";
 import {$createCodeNode} from "@lexical/code";
 import {mergeRegister} from "@lexical/utils";
 
-interface BlockFormat {
+export interface BlockFormat {
   key: string
-  chineseKey: string
-  chinesePinyinKey: string
-  initialLetterOfChinesePinyinKey: string
+  wordsToSearch: string[]
+  wordsToShow?: string
   name: string
   className?: string
   transform: (editor: LexicalEditor, selection: RangeSelection) => void
 }
 
-function useInsertMenuPlugin() {
+export function useSlashMenuPlugin(props) {
   const editor = useEditor()
   const rootContainer = ref<HTMLElement>()
 
@@ -44,12 +43,10 @@ function useInsertMenuPlugin() {
   const dropdownMenu = ref<HTMLElement | undefined>()
   let unregister: () => void
 
-  const blockFormats: BlockFormat[] = [
+  const defaultBlockFormats: BlockFormat[] = [
     {
       key: 'Paragraph',
-      chineseKey: '段落',
-      chinesePinyinKey: 'duanluo',
-      initialLetterOfChinesePinyinKey: 'dl',
+      wordsToSearch: ['段落', 'duanluo', 'dl'],
       name: 'Paragraph',
       className: 'format_paragraph',
       transform: (editor: LexicalEditor, selection: RangeSelection) => $wrapNodes(selection, () => {
@@ -58,9 +55,7 @@ function useInsertMenuPlugin() {
     },
     {
       key: 'Heading 1',
-      chineseKey: '一级标题',
-      chinesePinyinKey: 'yijibiaoti',
-      initialLetterOfChinesePinyinKey: 'yjbt',
+      wordsToSearch: ['一级标题', 'yijibiaoti', 'yjbt'],
       name: 'Heading 1',
       className: 'format_heading1',
       transform: (editor: LexicalEditor, selection: RangeSelection) => $wrapNodes(selection, () => {
@@ -69,9 +64,7 @@ function useInsertMenuPlugin() {
     },
     {
       key: 'Heading 2',
-      chineseKey: '二级标题',
-      chinesePinyinKey: 'erjibiaoti',
-      initialLetterOfChinesePinyinKey: 'ejbt',
+      wordsToSearch: ['二级标题', 'erjibiaoti', 'ejbt'],
       name: 'Heading 2',
       className: 'format_heading2',
       transform: (editor: LexicalEditor, selection: RangeSelection) => $wrapNodes(selection, () => {
@@ -80,9 +73,7 @@ function useInsertMenuPlugin() {
     },
     {
       key: 'Heading 3',
-      chineseKey: '三级标题',
-      chinesePinyinKey: 'sanjibiaoti',
-      initialLetterOfChinesePinyinKey: 'sjbt',
+      wordsToSearch: ['三级标题', 'sanjibiaoti', 'sjbt'],
       name: 'Heading 3',
       className: 'format_heading3',
       transform: (editor: LexicalEditor, selection: RangeSelection) => $wrapNodes(selection, () => {
@@ -91,9 +82,7 @@ function useInsertMenuPlugin() {
     },
     {
       key: 'Heading 4',
-      chineseKey: '四级标题',
-      chinesePinyinKey: 'sijibiaoti',
-      initialLetterOfChinesePinyinKey: 'sjbt',
+      wordsToSearch: ['四级标题', 'sijibiaoti', 'sjbt'],
       name: 'Heading 4',
       className: 'format_heading4',
       transform: (editor: LexicalEditor, selection: RangeSelection) => $wrapNodes(selection, () => {
@@ -102,9 +91,7 @@ function useInsertMenuPlugin() {
     },
     {
       key: 'Heading 5',
-      chineseKey: '五级标题',
-      chinesePinyinKey: 'wujibiaoti',
-      initialLetterOfChinesePinyinKey: 'wjbt',
+      wordsToSearch: ['五级标题', 'wujibiaoti', 'wjbt'],
       name: 'Heading 5',
       className: 'format_heading5',
       transform: (editor: LexicalEditor, selection: RangeSelection) => $wrapNodes(selection, () => {
@@ -113,9 +100,7 @@ function useInsertMenuPlugin() {
     },
     {
       key: 'Heading 6',
-      chineseKey: '六级标题',
-      chinesePinyinKey: 'liujibiaoti',
-      initialLetterOfChinesePinyinKey: 'sjbt',
+      wordsToSearch: ['六级标题', 'liujibiaoti', 'ljbt'],
       name: 'Heading 6',
       className: 'format_heading6',
       transform: (editor: LexicalEditor, selection: RangeSelection) => $wrapNodes(selection, () => {
@@ -124,9 +109,7 @@ function useInsertMenuPlugin() {
     },
     {
       key: 'Quote',
-      chineseKey: '引用文本',
-      chinesePinyinKey: 'yinyongwenben',
-      initialLetterOfChinesePinyinKey: 'yywb',
+      wordsToSearch: ['引用文本', 'yinyongwenben', 'yywb'],
       name: 'Quote',
       className: 'format_quote',
       transform: (editor: LexicalEditor, selection: RangeSelection) => $wrapNodes(selection, () => {
@@ -135,9 +118,7 @@ function useInsertMenuPlugin() {
     },
     {
       key: 'Unordered list',
-      chineseKey: '无序列表',
-      chinesePinyinKey: 'wuxuliebiao',
-      initialLetterOfChinesePinyinKey: 'wxlb',
+      wordsToSearch: ['无序列表', 'wuxuliebiao', 'wxlb'],
       name: 'Unordered list',
       className: 'format_ul',
       transform: (editor: LexicalEditor, selection: RangeSelection) => {
@@ -146,9 +127,7 @@ function useInsertMenuPlugin() {
     },
     {
       key: 'Ordered list',
-      chineseKey: '有序列表',
-      chinesePinyinKey: 'youxuliebiao',
-      initialLetterOfChinesePinyinKey: 'yxlb',
+      wordsToSearch: ['有序列表', 'youxuliebiao', 'yxlb'],
       name: 'Ordered list',
       className: 'format_ol',
       transform: (editor: LexicalEditor, selection: RangeSelection) => {
@@ -157,9 +136,7 @@ function useInsertMenuPlugin() {
     },
     {
       key: 'Check list',
-      chineseKey: '待办事项',
-      chinesePinyinKey: 'daibanshixiang',
-      initialLetterOfChinesePinyinKey: 'dbsx',
+      wordsToSearch: ['待办事项', 'daibanshixiang', 'dbsx'],
       name: 'Check list',
       className: 'format_todo',
       transform: (editor: LexicalEditor, selection: RangeSelection) => {
@@ -168,9 +145,7 @@ function useInsertMenuPlugin() {
     },
     {
       key: 'BlockCode',
-      chineseKey: '代码块',
-      chinesePinyinKey: 'daimakuai',
-      initialLetterOfChinesePinyinKey: 'dmk',
+      wordsToSearch: ['代码块', 'daimakuai', 'dmk'],
       name: 'BlockCode',
       className: 'format_block_code',
       // @ts-expect-error
@@ -194,6 +169,8 @@ function useInsertMenuPlugin() {
     //   }),
     // },
   ]
+
+  const blockFormats: BlockFormat[] = props.blockFormats ?? defaultBlockFormats
   const filterBlockFormats = ref(blockFormats)
   const isMListOrTodo = ref(false)
   let slashElementNodeKey: string | undefined
@@ -302,7 +279,6 @@ function useInsertMenuPlugin() {
   }
 
   const onHide = () => {
-    console.log('hide lexical insert block menu')
     data.value.isShow = false
     slashElementNodeKey = undefined
     searchKeyword.value = ''
@@ -316,7 +292,7 @@ function useInsertMenuPlugin() {
       return
     }
     filterBlockFormats.value = blockFormats.filter((b) => {
-      return b.key.toLowerCase().includes(searchKeyword.value.toLowerCase())
+      return [b.key, ...b.wordsToSearch].some((word) => word.toLowerCase().includes(searchKeyword.value.toLowerCase()))
       // if (locale.value.startsWith('zh-')) {
       //   return b.chineseKey.includes(searchKeyword.value) || b.chinesePinyinKey.includes(searchKeyword.value) || b.initialLetterOfChinesePinyinKey.includes(searchKeyword.value)
       // } else {
@@ -487,5 +463,3 @@ function useInsertMenuPlugin() {
     filterBlockFormats
   }
 }
-
-export default useInsertMenuPlugin

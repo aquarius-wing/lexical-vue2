@@ -7,6 +7,11 @@ export * from './useAutoLink'
 export * from './useEffect'
 export * from './useList'
 export * from './useHistory'
-export * from './useTabIndentationPlugin'
-export * from './useDropdownMenu'
-export * from './useInsertMenuPlugin'
+export { BlockFormat, useSlashMenuPlugin } from './useSlashMenuPlugin'
+export {
+  default as useTabIndentationPlugin
+} from './useTabIndentationPlugin'
+export {
+  default as useDropdownMenu
+}  from './useDropdownMenu'
+
