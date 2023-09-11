@@ -12,7 +12,7 @@ import {
   LexicalListPlugin,
   LexicalCheckListPlugin,
   LexicalTabIndentationPlugin,
-  LexicalInsertBlockMenuPlugin,
+  LexicalSlashMenuPlugin,
 } from 'lexical-vue2'
 import {$createHeadingNode, HeadingNode, QuoteNode} from '@lexical/rich-text'
 import {$createParagraphNode, $createTextNode, $getRoot} from "lexical";
@@ -109,7 +109,7 @@ export default {
     LexicalListPlugin,
     LexicalCheckListPlugin,
     LexicalTabIndentationPlugin,
-    LexicalInsertBlockMenuPlugin
+    LexicalSlashMenuPlugin
   },
 }
 </script>
@@ -143,7 +143,7 @@ export default {
         <LexicalListPlugin />
         <LexicalCheckListPlugin />
         <LexicalTabIndentationPlugin />
-        <LexicalInsertBlockMenuPlugin />
+        <LexicalSlashMenuPlugin />
       </div>
     </div>
   </LexicalComposer>
