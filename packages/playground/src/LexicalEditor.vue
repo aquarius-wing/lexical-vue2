@@ -12,6 +12,7 @@ import {
   LexicalListPlugin,
   LexicalCheckListPlugin,
   LexicalTabIndentationPlugin,
+  LexicalInsertBlockMenuPlugin,
 } from 'lexical-vue2'
 import {$createHeadingNode, HeadingNode, QuoteNode} from '@lexical/rich-text'
 import {$createParagraphNode, $createTextNode, $getRoot} from "lexical";
@@ -108,6 +109,7 @@ export default {
     LexicalListPlugin,
     LexicalCheckListPlugin,
     LexicalTabIndentationPlugin,
+    LexicalInsertBlockMenuPlugin
   },
 }
 </script>
@@ -141,11 +143,64 @@ export default {
         <LexicalListPlugin />
         <LexicalCheckListPlugin />
         <LexicalTabIndentationPlugin />
+        <LexicalInsertBlockMenuPlugin />
       </div>
     </div>
   </LexicalComposer>
 </template>
 
-<style>
+<style lang="scss">
+.editor-container{
+  position: relative;
+}
+.dropdown-menu {
+  position: absolute;
+  width: 300px;
+  padding: 8px 0;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.14);
+  z-index: 3000;
 
+  .dropdown-menu-item {
+    height: 36px;
+    font-size: 14px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    margin: 0 8px;
+    padding: 8px 8px;
+    gap: 12px;
+
+    .img-boxing {
+      width: 20px;
+      height: 20px;
+      background: #e9e9e9;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img {
+      //width: 14px;
+      //height: 14px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &, * {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #666666
+    }
+  }
+
+  .dropdown-menu-item-active {
+    background: #e9e9e9;
+  }
+}
 </style>

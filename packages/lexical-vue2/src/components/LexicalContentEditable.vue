@@ -1,6 +1,6 @@
 <script>
 import {nextTick, onMounted, ref, toRaw} from "@vue/composition-api";
-import {useEditor, useMounted} from "../composables";
+import {useEditor, useMounted} from "@/composables";
 
 export default {
   setup() {

@@ -1,6 +1,6 @@
 {
   "name": "lexical-vue2",
-  "version": "1.0.22",
+  "version": "1.1.0",
   "description": "use lexical in vue2",
   "main": "dist/bundle.js",
   "module": "dist/bundle.esm.js",
@@ -22,6 +22,7 @@
   "keywords": [],
   "author": "",
   "dependencies": {
+    "@lexical/code": "0.11.3",
     "core-js": "3.8.3",
     "vue-class-component": "^7.2.6",
     "vue2-teleport-component": "^0.0.4"
@@ -40,6 +41,7 @@
     "@lexical/rich-text": "^0.11.3",
     "@lexical/text": "^0.11.3",
     "@lexical/utils": "^0.11.3",
+    "@rollup/plugin-alias": "^5.0.0",
     "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-node-resolve": "^15.2.1",
     "@rollup/plugin-typescript": "^11.1.3",

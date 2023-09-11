@@ -34,3 +34,12 @@ export {
 export {
     default as LexicalTabIndentationPlugin
 } from './LexicalTabIndentationPlugin.vue'
+export {
+    default as LexicalInsertBlockMenuPlugin
+} from './LexicalInsertBlockMenuPlugin.vue'
+export {
+    default as DropdownMenu
+} from './DropdownMenu.vue'
+export {
+    default as DropdownMenuItem
+} from './DropdownMenuItem.vue'

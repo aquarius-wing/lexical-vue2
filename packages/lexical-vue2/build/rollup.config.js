@@ -3,6 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import typescript from '@rollup/plugin-typescript';
+import alias from '@rollup/plugin-alias'
 
 export default {
     input: 'src/index.ts',
@@ -24,6 +25,11 @@ export default {
         }
     ],
     plugins: [
+        alias({
+            entries: [
+                {find: /^@\/(.*?)$/, replacement: 'src/$1'},
+            ]
+        }),
         typescript(),
         resolve({
             extensions: ['.js', '.vue'],
@@ -48,6 +54,7 @@ export default {
         '@lexical/mark',
         '@lexical/markdown',
         '@lexical/list',
+        '@lexical/code',
         'lexical'
     ]
 };
