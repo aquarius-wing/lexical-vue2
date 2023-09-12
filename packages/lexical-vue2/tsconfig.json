@@ -10,6 +10,7 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "noImplicitAny": false,
     "sourceMap": true,
     "baseUrl": ".",
@@ -27,6 +28,7 @@
     "outDir": "dist"
   },
   "include": [
+    "src/**/*.json",
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",

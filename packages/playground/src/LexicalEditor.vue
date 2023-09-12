@@ -12,40 +12,46 @@ import {
   LexicalListPlugin,
   LexicalCheckListPlugin,
   LexicalTabIndentationPlugin,
-  LexicalSlashMenuPlugin, DividerNode, DIVIDER,
+  LexicalSlashMenuPlugin, DividerNode, DIVIDER, EMOJI, EmojiNode,
 } from 'lexical-vue2'
-import {$createHeadingNode, HeadingNode, QuoteNode} from '@lexical/rich-text'
-import {$createParagraphNode, $createTextNode, $getRoot} from "lexical";
+import {HeadingNode, QuoteNode} from '@lexical/rich-text'
 import {ListItemNode, ListNode} from "@lexical/list";
 import {AutoLinkNode, LinkNode} from "@lexical/link";
 import {CodeHighlightNode, CodeNode} from "@lexical/code";
 import {TableCellNode, TableNode, TableRowNode} from "@lexical/table";
 import {HashtagNode} from "@lexical/hashtag";
-import {$createImageNode, ImageNode} from "@/nodes/ImageNode";
-import {TRANSFORMERS} from "@lexical/markdown";
+import {ImageNode} from "@/nodes/ImageNode";
+import {$convertFromMarkdownString, TRANSFORMERS} from "@lexical/markdown";
 
 export default {
   computed: {
+    EMOJI() {
+      return EMOJI
+    },
     DIVIDER() {
       return DIVIDER
     },
     TRANSFORMERS() {
       return TRANSFORMERS
+    },
+    MY_TRANSFORMERS() {
+      return [EMOJI, DIVIDER, ...TRANSFORMERS]
     }
   },
   setup() {
-    function prePopulatedRichText() {
-      const root = $getRoot()
-      if (root.getFirstChild() === null) {
-        const heading = $createHeadingNode('h1')
-        heading.append($createTextNode('Welcome to the playground'))
-        root.append(heading)
-        const image = $createImageNode({})
-        const p = $createParagraphNode()
-        p.append(image)
-        root.append(p)
-      }
-    }
+    // function prePopulatedRichText() {
+    //   const root = $getRoot()
+    //   if (root.getFirstChild() === null) {
+    //     const heading = $createHeadingNode('h1')
+    //     heading.append($createTextNode('Welcome to the playground'))
+    //     root.append(heading)
+    //     const image = $createImageNode({})
+    //     const p = $createParagraphNode()
+    //     p.append(image)
+    //     root.append(p)
+    //     root.append($createParagraphNode())
+    //   }
+    // }
     const config = {
       editable: true,
       nodes: [
@@ -63,8 +69,9 @@ export default {
         HashtagNode,
         ImageNode,
         DividerNode,
+        EmojiNode,
       ],
-      editorState: prePopulatedRichText,
+      editorState: () => $convertFromMarkdownString('# Hello world\n:grinning:', [EMOJI, DIVIDER, ...TRANSFORMERS]),
     }
 
     const URL_MATCHER = /((https?:\/\/(www\.)?)|(www\.))[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/
@@ -140,7 +147,7 @@ export default {
         </LexicalRichTextPlugin>
         <LexicalAutoFocusPlugin/>
         <LexicalAutoLinkPlugin :matchers="MATCHERS"/>
-        <LexicalMarkdownShortcutPlugin :transformers="[DIVIDER, ...TRANSFORMERS]"/>
+        <LexicalMarkdownShortcutPlugin :transformers="[EMOJI, DIVIDER, ...TRANSFORMERS]"/>
         <LexicalOnChangePlugin v-on:change="onChange" />
         <LexicalTreeViewPlugin
             view-class-name="tree-view-output"
