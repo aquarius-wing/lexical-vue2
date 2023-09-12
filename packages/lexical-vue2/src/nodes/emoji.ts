@@ -90,8 +90,10 @@ export const EMOJI: TextMatchTransformer = {
   regExp: /:(.*?):/,
   replace: (textNode, match: RegExpMatchArray) => {
     const [, text] = match;
-    const emojiNode = $createEmojiNode(text);
-    textNode.replace(emojiNode);
+    if (EmojiData[text]) {
+      const emojiNode = $createEmojiNode(text);
+      textNode.replace(emojiNode);
+    }
   },
   trigger: ':',
   type: 'text-match'

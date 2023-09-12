@@ -10,5 +10,11 @@ module.exports = defineConfig({
         options.appendTsSuffixTo = [/\.vue$/];
         return options;
       });
+      config.module
+          .rule('md')
+          .test(/\.md$/)
+          .use('raw-loader')
+          .loader('raw-loader')
+          .end()
   }
 })

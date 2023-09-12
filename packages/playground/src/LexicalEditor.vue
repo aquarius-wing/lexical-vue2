@@ -22,6 +22,8 @@ import {TableCellNode, TableNode, TableRowNode} from "@lexical/table";
 import {HashtagNode} from "@lexical/hashtag";
 import {ImageNode} from "@/nodes/ImageNode";
 import {$convertFromMarkdownString, TRANSFORMERS} from "@lexical/markdown";
+import ExampleMd from './assets/example.md'
+import LexicalReloadPlugin from "@/LexicalReloadPlugin.vue";
 
 export default {
   computed: {
@@ -52,6 +54,7 @@ export default {
     //     root.append($createParagraphNode())
     //   }
     // }
+    console.log("ExampleMd", ExampleMd);
     const config = {
       editable: true,
       nodes: [
@@ -71,7 +74,7 @@ export default {
         DividerNode,
         EmojiNode,
       ],
-      editorState: () => $convertFromMarkdownString('# Hello world:joy:\n:grinning:', [EMOJI, DIVIDER, ...TRANSFORMERS]),
+      editorState: () => $convertFromMarkdownString(ExampleMd, [EMOJI, DIVIDER, ...TRANSFORMERS]),
     }
 
     const onError = (error) => {
@@ -119,6 +122,7 @@ export default {
     }
   },
   components: {
+    LexicalReloadPlugin,
     LexicalComposer,
     LexicalRichTextPlugin,
     LexicalContentEditable,
@@ -166,6 +170,7 @@ export default {
         <LexicalCheckListPlugin />
         <LexicalTabIndentationPlugin />
         <LexicalSlashMenuPlugin />
+        <LexicalReloadPlugin />
       </div>
     </div>
   </LexicalComposer>
