@@ -27,7 +27,7 @@
     "vue2-teleport-component": "^0.0.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
+    "@babel/core": "^7.22.10",
     "@babel/preset-env": "^7.22.10",
     "@babel/preset-typescript": "^7",
     "@lexical/clipboard": "^0.12.0",

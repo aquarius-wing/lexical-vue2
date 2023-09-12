@@ -32,15 +32,15 @@ export default {
                 {find: /^@\/(.*?)$/, replacement: 'src/$1'},
             ]
         }),
-        typescript(),
-        resolve({
-            extensions: ['.js', '.vue'],
-        }),
-        commonjs(),
         vue({
             css: true,
             compileTemplate: true,
         }),
+        typescript(),
+        resolve({
+            extensions: ['.js', '.ts', '.vue'],
+        }),
+        commonjs(),
         babel({
             exclude: 'node_modules/**' // 只对我们的源代码进行转换
         })
@@ -56,6 +56,8 @@ export default {
         '@lexical/mark',
         '@lexical/markdown',
         '@lexical/list',
+        '@lexical/link',
+        '@lexical/history',
         '@lexical/code',
         'lexical'
     ]

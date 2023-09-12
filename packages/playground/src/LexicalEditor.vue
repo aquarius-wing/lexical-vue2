@@ -12,7 +12,7 @@ import {
   LexicalListPlugin,
   LexicalCheckListPlugin,
   LexicalTabIndentationPlugin,
-  LexicalSlashMenuPlugin, DividerNode, DIVIDER, EMOJI, EmojiNode,
+  LexicalSlashMenuPlugin, DividerNode, DIVIDER, EMOJI, EmojiNode, ImageNode
 } from 'lexical-vue2'
 import {HeadingNode, QuoteNode} from '@lexical/rich-text'
 import {ListItemNode, ListNode} from "@lexical/list";
@@ -20,7 +20,6 @@ import {AutoLinkNode, LinkNode} from "@lexical/link";
 import {CodeHighlightNode, CodeNode} from "@lexical/code";
 import {TableCellNode, TableNode, TableRowNode} from "@lexical/table";
 import {HashtagNode} from "@lexical/hashtag";
-import {ImageNode} from "@/nodes/ImageNode";
 import {$convertFromMarkdownString, TRANSFORMERS} from "@lexical/markdown";
 import ExampleMd from './assets/example.md'
 import LexicalReloadPlugin from "@/LexicalReloadPlugin.vue";
