@@ -71,7 +71,11 @@ export default {
         DividerNode,
         EmojiNode,
       ],
-      editorState: () => $convertFromMarkdownString('# Hello world\n:grinning:', [EMOJI, DIVIDER, ...TRANSFORMERS]),
+      editorState: () => $convertFromMarkdownString('# Hello world:joy:\n:grinning:', [EMOJI, DIVIDER, ...TRANSFORMERS]),
+    }
+
+    const onError = (error) => {
+      console.error(error)
     }
 
     const URL_MATCHER = /((https?:\/\/(www\.)?)|(www\.))[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/
@@ -110,7 +114,8 @@ export default {
     return {
       config,
       MATCHERS,
-      onChange
+      onChange,
+      onError
     }
   },
   components: {
@@ -132,7 +137,7 @@ export default {
 </script>
 
 <template>
-  <LexicalComposer :initialConfig="config">
+  <LexicalComposer :initialConfig="config" @error="onError">
     <div class="editor-container">
       <div class="editor-inner">
         <LexicalRichTextPlugin>
