@@ -149,8 +149,8 @@ importers:
         specifier: ^0.11.3
         version: 0.11.3(lexical@0.11.3)
       '@lexical/markdown':
-        specifier: ^0.11.3
-        version: 0.11.3(@lexical/clipboard@0.11.3)(@lexical/selection@0.11.3)(lexical@0.11.3)
+        specifier: https://gh2npm-vercel.meogic.com/api/tatfook/lexical-for-keepwork/packages/lexical-markdown/npm?branch=keepwork-main
+        version: '@gh2npm-vercel.meogic.com/api/tatfook/lexical-for-keepwork/packages/lexical-markdown/npm?branch=keepwork-main(@lexical/clipboard@0.11.3)(@lexical/selection@0.11.3)(lexical@0.11.3)'
       '@lexical/overflow':
         specifier: ^0.11.3
         version: 0.11.3(lexical@0.11.3)
@@ -178,6 +178,9 @@ importers:
       core-js:
         specifier: ^3.8.3
         version: 3.32.0
+      github-markdown-css:
+        specifier: ^5.2.0
+        version: 5.2.0
       lexical:
         specifier: ^0.11.3
         version: 0.11.3
@@ -1707,6 +1710,16 @@ packages:
       lexical: 0.11.3
       prismjs: 1.29.0
 
+  /@lexical/code@0.12.0(lexical@0.11.3):
+    resolution: {integrity: sha512-Mdq1lTQV6KIrmF7O+LE9A57gI2T0PTfC1/uWZ7ikxVpSFVt10mn+8WSyAk7kO+ltEbL/aW7PJHEqMsuEfJH7kw==}
+    peerDependencies:
+      lexical: 0.12.0
+    dependencies:
+      '@lexical/utils': 0.12.0(lexical@0.11.3)
+      lexical: 0.11.3
+      prismjs: 1.29.0
+    dev: false
+
   /@lexical/dragon@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-S18uwqOOpV2yIAFVWqSvBdhZ5BGadPQO4ejZF15wP8LUuqkxCs+0I/MjLovQ7tx0Cx34KdDaOXtM6XeG74ixYw==}
     peerDependencies:
@@ -1747,6 +1760,15 @@ packages:
       '@lexical/utils': 0.11.3(lexical@0.11.3)
       lexical: 0.11.3
 
+  /@lexical/link@0.12.0(lexical@0.11.3):
+    resolution: {integrity: sha512-5oGvOgUi+IghnHtQ7bo0yPkgYW7FdT0YMPj2Ucsje8srt8BaZKgbrm7D/ZsXPV4XljVJZce7HLT46KJzs2SDYA==}
+    peerDependencies:
+      lexical: 0.12.0
+    dependencies:
+      '@lexical/utils': 0.12.0(lexical@0.11.3)
+      lexical: 0.11.3
+    dev: false
+
   /@lexical/list@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-Cs9071wDfqi4j1VgodceiR1jTHj13eCoEJDhr3e/FW0x5we7vfbTMtWlOWbveIoryAh+rQNgiD5e8SrAm6Zs3g==}
     peerDependencies:
@@ -1754,6 +1776,15 @@ packages:
     dependencies:
       '@lexical/utils': 0.11.3(lexical@0.11.3)
       lexical: 0.11.3
+
+  /@lexical/list@0.12.0(lexical@0.11.3):
+    resolution: {integrity: sha512-l+5H753UQpmsqD8aEZ/LZd3YNysZ1SH693aEIgM1VIKmTftzd9+MTcqovnLNBzZQ98a5e4i1xgapOGIWkJ/MrQ==}
+    peerDependencies:
+      lexical: 0.12.0
+    dependencies:
+      '@lexical/utils': 0.12.0(lexical@0.11.3)
+      lexical: 0.11.3
+    dev: false
 
   /@lexical/mark@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-0wAtufmaA0rMVFXoiJ0sY/tiJsQbHuDpgywb1Qa8qnZZcg7ZTrQMz9Go0fEWYcbSp8OH2o0cjbDTz3ACS1qCUA==}
@@ -1778,6 +1809,7 @@ packages:
     transitivePeerDependencies:
       - '@lexical/clipboard'
       - '@lexical/selection'
+    dev: true
 
   /@lexical/overflow@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-ShjCG8lICShOBKwrpP+9PjRFKEBCSUUMjbIGZfLnoL//3hyRtGv5aRgRyfJlRgDhCve0ROt5znLJV88EXzGRyA==}
@@ -1814,12 +1846,34 @@ packages:
       '@lexical/utils': 0.11.3(lexical@0.11.3)
       lexical: 0.11.3
 
+  /@lexical/rich-text@0.12.0(@lexical/clipboard@0.11.3)(@lexical/selection@0.11.3)(@lexical/utils@0.12.0)(lexical@0.11.3):
+    resolution: {integrity: sha512-Rhz3tzzTQFZX5k5XJSlJgyy8BJPz+/Jmw7RuEXzVTGxniAcovEll9TLXbZQ7SJLeHkPmJ65PdXR0om29KhjFVg==}
+    peerDependencies:
+      '@lexical/clipboard': 0.12.0
+      '@lexical/selection': 0.12.0
+      '@lexical/utils': 0.12.0
+      lexical: 0.12.0
+    dependencies:
+      '@lexical/clipboard': 0.11.3(lexical@0.11.3)
+      '@lexical/selection': 0.11.3(lexical@0.11.3)
+      '@lexical/utils': 0.12.0(lexical@0.11.3)
+      lexical: 0.11.3
+    dev: false
+
   /@lexical/selection@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-15lQpcKT/vd7XZ5pnF1nb+kpKb72e9Yi1dVqieSxTeXkzt1cAZFKP3NB4RlhOKCv1N+glSBnjSxRwgsFfbD+NQ==}
     peerDependencies:
       lexical: 0.11.3
     dependencies:
       lexical: 0.11.3
+
+  /@lexical/selection@0.12.0(lexical@0.11.3):
+    resolution: {integrity: sha512-0JpwYHwQ3wTsP98hR9xbx7GhWayERQ7rOvzmPOim7FRXQHEdqzxek5imxwyCPL4cTgHY5y+zrnCXluLeSLd57Q==}
+    peerDependencies:
+      lexical: 0.12.0
+    dependencies:
+      lexical: 0.11.3
+    dev: false
 
   /@lexical/table@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-EyRnN39CSPsMceADBR7Kf+sBHNpNQlPEkn/52epeDSnakR6s80woyrA3kIzKo6mLB4afvoqdYc7RfR96M9JLIA==}
@@ -1829,12 +1883,29 @@ packages:
       '@lexical/utils': 0.11.3(lexical@0.11.3)
       lexical: 0.11.3
 
+  /@lexical/table@0.12.0(lexical@0.11.3):
+    resolution: {integrity: sha512-YVPuHJdE7yTi0vqzYiL6tjLy9aOixiSuGu+Tv4ohqpz4RMlG8ewoOrHy8losUdA26YHGPLGxwMN6QmtpW/8iPg==}
+    peerDependencies:
+      lexical: 0.12.0
+    dependencies:
+      '@lexical/utils': 0.12.0(lexical@0.11.3)
+      lexical: 0.11.3
+    dev: false
+
   /@lexical/text@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-gCEN8lJyR6b+yaOwKWGj79pbOfCQPWU/PHWyoNFUkEJXn3KydCzr2EYb6ta2cvQWRQU4G2BClKCR56jL4NS+qg==}
     peerDependencies:
       lexical: 0.11.3
     dependencies:
       lexical: 0.11.3
+
+  /@lexical/text@0.12.0(lexical@0.11.3):
+    resolution: {integrity: sha512-kem90E1R+anQBePR/3KzUtmBgkmtmjTfSuozCfRbKR7otivciGPek4pc+J3MvqW0UVLCnDfptWSoj4+YRz1BRA==}
+    peerDependencies:
+      lexical: 0.12.0
+    dependencies:
+      lexical: 0.11.3
+    dev: false
 
   /@lexical/utils@0.11.3(lexical@0.11.3):
     resolution: {integrity: sha512-vC4saCrlcmyIJnvrYKw1uYxZojlD1DCIBsFlgmO8kXyRYXjj+o/8PBdn2dsgSQ3rADrC2mUloOm/maekDcYe9Q==}
@@ -1845,6 +1916,17 @@ packages:
       '@lexical/selection': 0.11.3(lexical@0.11.3)
       '@lexical/table': 0.11.3(lexical@0.11.3)
       lexical: 0.11.3
+
+  /@lexical/utils@0.12.0(lexical@0.11.3):
+    resolution: {integrity: sha512-ESAKn4GsSUyBXbebSWT0ZoSrLQ5RRdGXh3MERENystbr33cwSVZ1NEzHnQAy6KxCUZVuuFjUusQo7T/qQzLFYw==}
+    peerDependencies:
+      lexical: 0.12.0
+    dependencies:
+      '@lexical/list': 0.12.0(lexical@0.11.3)
+      '@lexical/selection': 0.12.0(lexical@0.11.3)
+      '@lexical/table': 0.12.0(lexical@0.11.3)
+      lexical: 0.11.3
+    dev: false
 
   /@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1:
     resolution: {integrity: sha512-54/JRvkLIzzDWshCWfuhadfrfZVPiElY8Fcgmg1HroEly/EDSszzhBAsarCux+D/kOslTRquNzuyGSmUSTTHGg==}
@@ -2676,7 +2758,7 @@ packages:
     optionalDependencies:
       less: 3.13.1
       pug: 3.0.2
-      sass: 1.64.2
+      sass: 1.66.1
       stylus: 0.54.8
     transitivePeerDependencies:
       - arc-templates
@@ -5190,6 +5272,10 @@ packages:
     resolution: {integrity: sha512-Ln0UQDlxH1BapMu3GPtf7CuYNwRZf2gwCuPqbyG6pB8WfmFpzqcy4xtAaAMUhnNqjMKTiCPZG2oMT3YSx8U2NA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /github-markdown-css@5.2.0:
+    resolution: {integrity: sha512-hq5RaCInSUZ48bImOZpkppW2/MT44StRgsbsZ8YA4vJFwLKB/Vo3k7R2t+pUGqO+ThG0QDMi96TewV/B3vyItg==}
+    dev: false
 
   /glob-base@0.3.0:
     resolution: {integrity: sha512-ab1S1g1EbO7YzauaJLkgLp7DZVAqj9M/dvKlTt8DkXA2tiOIcSMrlVI2J1RZyB5iJVccEscjGn+kpOG9788MHA==}
@@ -8031,18 +8117,6 @@ packages:
       webpack: 5.88.2
     dev: true
 
-  /sass@1.64.2:
-    resolution: {integrity: sha512-TnDlfc+CRnUAgLO9D8cQLFu/GIjJIzJCGkE7o4ekIGQOH7T3GetiRR/PsTWJUHhkzcSPrARkPI+gNWn5alCzDg==}
-    engines: {node: '>=14.0.0'}
-    hasBin: true
-    requiresBuild: true
-    dependencies:
-      chokidar: 3.5.3
-      immutable: 4.3.2
-      source-map-js: 1.0.2
-    dev: true
-    optional: true
-
   /sass@1.66.1:
     resolution: {integrity: sha512-50c+zTsZOJVgFfTgwwEzkjA3/QACgdNsKueWPyAR0mRINIvLAStVQBbPg14iuqEQ74NPDbXzJARJ/O4SI1zftA==}
     engines: {node: '>=14.0.0'}
@@ -9427,3 +9501,23 @@ packages:
       normalize-path: 1.0.0
       strip-indent: 2.0.0
     dev: true
+
+  '@gh2npm-vercel.meogic.com/api/tatfook/lexical-for-keepwork/packages/lexical-markdown/npm?branch=keepwork-main(@lexical/clipboard@0.11.3)(@lexical/selection@0.11.3)(lexical@0.11.3)':
+    resolution: {tarball: https://gh2npm-vercel.meogic.com/api/tatfook/lexical-for-keepwork/packages/lexical-markdown/npm?branch=keepwork-main}
+    id: '@gh2npm-vercel.meogic.com/api/tatfook/lexical-for-keepwork/packages/lexical-markdown/npm?branch=keepwork-main'
+    name: '@lexical/markdown'
+    version: 0.12.0
+    peerDependencies:
+      lexical: 0.12.0
+    dependencies:
+      '@lexical/code': 0.12.0(lexical@0.11.3)
+      '@lexical/link': 0.12.0(lexical@0.11.3)
+      '@lexical/list': 0.12.0(lexical@0.11.3)
+      '@lexical/rich-text': 0.12.0(@lexical/clipboard@0.11.3)(@lexical/selection@0.11.3)(@lexical/utils@0.12.0)(lexical@0.11.3)
+      '@lexical/text': 0.12.0(lexical@0.11.3)
+      '@lexical/utils': 0.12.0(lexical@0.11.3)
+      lexical: 0.11.3
+    transitivePeerDependencies:
+      - '@lexical/clipboard'
+      - '@lexical/selection'
+    dev: false

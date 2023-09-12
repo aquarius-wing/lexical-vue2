@@ -7,6 +7,8 @@ export * from './components'
 
 export * from './composables'
 
+export * from './nodes'
+
 // export * as useSplashMenuPlugin from './composables/useSlashMenuPlugin'
 // export * as useDropdownMenu from './composables/useDropdownMenu'
 // export * as useTabIndentationPlugin from './composables/useTabIndentationPlugin'

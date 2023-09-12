@@ -12,7 +12,7 @@ import {
   LexicalListPlugin,
   LexicalCheckListPlugin,
   LexicalTabIndentationPlugin,
-  LexicalSlashMenuPlugin,
+  LexicalSlashMenuPlugin, DividerNode, DIVIDER,
 } from 'lexical-vue2'
 import {$createHeadingNode, HeadingNode, QuoteNode} from '@lexical/rich-text'
 import {$createParagraphNode, $createTextNode, $getRoot} from "lexical";
@@ -22,8 +22,17 @@ import {CodeHighlightNode, CodeNode} from "@lexical/code";
 import {TableCellNode, TableNode, TableRowNode} from "@lexical/table";
 import {HashtagNode} from "@lexical/hashtag";
 import {$createImageNode, ImageNode} from "@/nodes/ImageNode";
+import {TRANSFORMERS} from "@lexical/markdown";
 
 export default {
+  computed: {
+    DIVIDER() {
+      return DIVIDER
+    },
+    TRANSFORMERS() {
+      return TRANSFORMERS
+    }
+  },
   setup() {
     function prePopulatedRichText() {
       const root = $getRoot()
@@ -53,6 +62,7 @@ export default {
         LinkNode,
         HashtagNode,
         ImageNode,
+        DividerNode,
       ],
       editorState: prePopulatedRichText,
     }
@@ -120,7 +130,7 @@ export default {
       <div class="editor-inner">
         <LexicalRichTextPlugin>
           <template #contentEditable>
-            <LexicalContentEditable class="editor-input"/>
+            <LexicalContentEditable class="editor-input markdown-body"/>
           </template>
           <template #placeholder>
             <div class="editor-placeholder">
@@ -130,7 +140,7 @@ export default {
         </LexicalRichTextPlugin>
         <LexicalAutoFocusPlugin/>
         <LexicalAutoLinkPlugin :matchers="MATCHERS"/>
-        <LexicalMarkdownShortcutPlugin/>
+        <LexicalMarkdownShortcutPlugin :transformers="[DIVIDER, ...TRANSFORMERS]"/>
         <LexicalOnChangePlugin v-on:change="onChange" />
         <LexicalTreeViewPlugin
             view-class-name="tree-view-output"
@@ -150,6 +160,8 @@ export default {
 </template>
 
 <style lang="scss">
+@import '~github-markdown-css/github-markdown.css';
+
 .editor-container{
   position: relative;
 }
