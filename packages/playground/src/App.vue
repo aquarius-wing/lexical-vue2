@@ -1,8 +1,22 @@
 <template>
   <div id="app">
-    <h1>asdasdasd</h1>
+    <h1>Lexical Vue2 Demo</h1>
+    <p>Note: this is an experimental build of Lexical</p>
     <LexicalEditor ref="editorDOM"/>
-
+    <div class="other">
+      <h2>View source</h2>
+      <ul>
+        <li>
+          <a
+              href="https://github.com/tatfook/lexical-vue2"
+              target="_blank"
+              rel="noreferrer"
+          >
+            GitHub
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
