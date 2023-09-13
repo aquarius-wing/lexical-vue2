@@ -6,9 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { $applyNodeReplacement, createEditor, DecoratorNode } from 'lexical';
-import {h} from "@vue/composition-api";
-import ImageNodeVue from "@/nodes/ImageNodeVue.vue";
+import {$applyNodeReplacement, createEditor, TextNode} from 'lexical';
+import {TextMatchTransformer} from "@lexical/markdown";
 function convertImageElement(domNode) {
     if (domNode instanceof HTMLImageElement) {
         const { alt: altText, src, width, height } = domNode;
@@ -17,17 +16,18 @@ function convertImageElement(domNode) {
     }
     return null;
 }
-export class ImageNode extends DecoratorNode {
+export class ImageNode extends TextNode {
     static getType() {
         return 'image';
     }
     static clone(node) {
-        return new ImageNode(node.__src, node.__altText, node.__maxWidth, node.__width, node.__height, node.__showCaption, node.__caption, node.__captionsEnabled, node.__key);
+        return new ImageNode(node.__src, node.__altText, node.__title, node.__maxWidth, node.__width, node.__height, node.__showCaption, node.__caption, node.__captionsEnabled, node.__key);
     }
     static importJSON(serializedNode) {
-        const { altText, height, width, maxWidth, caption, src, showCaption } = serializedNode;
+        const { altText, height, width, maxWidth, caption, src, showCaption, title } = serializedNode;
         const node = $createImageNode({
             altText,
+            title,
             height,
             maxWidth,
             showCaption,
@@ -45,6 +45,7 @@ export class ImageNode extends DecoratorNode {
         const element = document.createElement('img');
         element.setAttribute('src', this.__src);
         element.setAttribute('alt', this.__altText);
+        element.setAttribute('title', this.__title);
         element.setAttribute('width', this.__width.toString());
         element.setAttribute('height', this.__height.toString());
         return { element };
@@ -57,9 +58,10 @@ export class ImageNode extends DecoratorNode {
             }),
         };
     }
-    constructor(src, altText, maxWidth, width, height, showCaption, caption, captionsEnabled, key) {
+    constructor(src, altText, title, maxWidth, width, height, showCaption, caption, captionsEnabled, key) {
         super(key);
         this.__src = src;
+        this.__title = title;
         this.__altText = altText;
         this.__maxWidth = maxWidth;
         this.__width = width || 'inherit';
@@ -93,11 +95,18 @@ export class ImageNode extends DecoratorNode {
     // View
     createDOM(config) {
         const span = document.createElement('span');
+        span.setAttribute('contenteditable', 'false');
         const theme = config.theme;
         const className = theme.image;
         if (className !== undefined) {
             span.className = className;
         }
+
+        const img = document.createElement('img');
+        img.setAttribute('src', this.__src);
+        img.setAttribute('alt', this.__altText);
+        img.setAttribute('title', this.__title);
+        span.append(img)
         return span;
     }
     updateDOM() {
@@ -109,17 +118,35 @@ export class ImageNode extends DecoratorNode {
     getAltText() {
         return this.__altText;
     }
-    decorate() {
-        return h(ImageNodeVue, {
-            props: {
-                ...this.exportJSON(),
-            }
-        })
+    getTextContent(): string {
+        return this.getSrc()
     }
 }
-export function $createImageNode({ altText, height, maxWidth = 500, captionsEnabled, src, width, showCaption, caption, key, }) {
-    return $applyNodeReplacement(new ImageNode(src, altText, maxWidth, width, height, showCaption, caption, captionsEnabled, key));
+export function $createImageNode({ altText, height, maxWidth = 500, captionsEnabled, src, width, showCaption, caption, key, title }) {
+    const node = $applyNodeReplacement(new ImageNode(src, altText, title, maxWidth, width, height, showCaption, caption, captionsEnabled, key))
+    node.setMode('token')
+    return node;
 }
 export function $isImageNode(node) {
     return node instanceof ImageNode;
+}
+
+export const IMAGE: TextMatchTransformer = {
+    dependencies: [ImageNode],
+    export: (node, exportChildren, exportFormat) => {
+        return `![${(node as ImageNode).getAltText()}](${node.getUrl()})`
+    },
+    importRegExp: /!\[(.*?)\]\((.*?)(\s".*?")?\)/,
+    regExp: /!\[(.*?)\]\((.*?)(\s".*?")?\)/,
+    replace: (textNode, match) => {
+        const [_, altText, url, title] = match
+        const imageNode = $createImageNode({
+            altText,
+            src: url,
+            title
+        })
+        textNode.replace(imageNode)
+    },
+    trigger: ')',
+    type: 'text-match',
 }

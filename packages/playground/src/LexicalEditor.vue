@@ -12,7 +12,7 @@ import {
   LexicalListPlugin,
   LexicalCheckListPlugin,
   LexicalTabIndentationPlugin,
-  LexicalSlashMenuPlugin, DividerNode, DIVIDER, EMOJI, EmojiNode, ImageNode
+  LexicalSlashMenuPlugin, DividerNode, DIVIDER, EMOJI, EmojiNode, ImageNode, IMAGE
 } from 'lexical-vue2'
 import {HeadingNode, QuoteNode} from '@lexical/rich-text'
 import {ListItemNode, ListNode} from "@lexical/list";
@@ -26,6 +26,9 @@ import LexicalReloadPlugin from "@/LexicalReloadPlugin.vue";
 
 export default {
   computed: {
+    IMAGE() {
+      return IMAGE
+    },
     EMOJI() {
       return EMOJI
     },
@@ -46,10 +49,14 @@ export default {
     //     const heading = $createHeadingNode('h1')
     //     heading.append($createTextNode('Welcome to the playground'))
     //     root.append(heading)
-    //     const image = $createImageNode({})
+    //     const image = $createImageNode({src: 'https://qiniu.keepwork.com/70-5fd74149-814e-472d-8bec-44b56ae92b56.jpg?e=4834193186&token=LYZsjH0681n9sWZqCM4E2KmU6DsJOE7CAM4O3eJq:t7PphTkSZPsZWZLDni7cJkrGvRo='})
     //     const p = $createParagraphNode()
     //     p.append(image)
     //     root.append(p)
+    //     root.append(
+    //         $createParagraphNode()
+    //             .append($createImageNode({src: 'https://octodex.github.com/images/minion.png'}))
+    //     )
     //     root.append($createParagraphNode())
     //   }
     // }
@@ -73,7 +80,7 @@ export default {
         DividerNode,
         EmojiNode,
       ],
-      editorState: () => $convertFromMarkdownString(ExampleMd, [EMOJI, DIVIDER, ...TRANSFORMERS]),
+      editorState: () => $convertFromMarkdownString(ExampleMd, [IMAGE, EMOJI, DIVIDER, ...TRANSFORMERS]),
     }
 
     const onError = (error) => {
@@ -155,7 +162,7 @@ export default {
         </LexicalRichTextPlugin>
         <LexicalAutoFocusPlugin/>
         <LexicalAutoLinkPlugin :matchers="MATCHERS"/>
-        <LexicalMarkdownShortcutPlugin :transformers="[EMOJI, DIVIDER, ...TRANSFORMERS]"/>
+        <LexicalMarkdownShortcutPlugin :transformers="[IMAGE, EMOJI, DIVIDER, ...TRANSFORMERS]"/>
         <LexicalOnChangePlugin v-on:change="onChange" />
         <LexicalTreeViewPlugin
             view-class-name="tree-view-output"
